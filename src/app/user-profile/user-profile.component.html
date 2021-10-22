@@ -1,0 +1,138 @@
+
+  <div *ngIf="isShown" class="data" id="divshow">
+    First Name: {{ val.firstName }}
+    <br>
+    Last Name: {{ val.lastName }}
+    <br> 
+    Age: {{ val.age }}
+    <br> 
+    Email: {{ val.email }}
+    <br>
+    Password: {{ pass }}
+  </div>
+    
+<mat-card class="login-page">
+    <mat-card-title>User Profile (Template)</mat-card-title>
+    <mat-card-content>
+      <form class="login-form data-form" 
+      #loginForm= "ngForm"
+      (ngSubmit)="onSubmit(loginForm)"
+      >
+         <mat-form-field>
+            <input 
+            matInput type="text"  
+            name="firstName" 
+            firstNname
+            [(ngModel)] = "val.firstName"
+            placeholder="First Name"
+            required
+            maxlength="20"
+            #firstName="ngModel"/>
+
+            <mat-error *ngIf="firstName.errors?.required">
+                First Name is required
+             </mat-error>
+             
+             <mat-error *ngIf="firstName.errors?.maxlength">
+                Max 20 characters
+           </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input 
+           matInput type="text"  
+           name="lastName" 
+           lastName
+           [(ngModel)]="val.lastName"   
+           placeholder="Last Name"
+           required
+           maxlength="20"
+           #lastName="ngModel"
+          />
+          <mat-error *ngIf="lastName.errors?.required">
+              Last Name is required
+           </mat-error>
+
+           <mat-error *ngIf="firstName.errors?.maxlength">
+            Max 20 characters
+       </mat-error>
+      </mat-form-field>
+
+       <mat-form-field>
+          <input 
+          matInput type="number"  
+          name="age" 
+          age
+          [(ngModel)] = "val.age" 
+          placeholder="Age"
+          required
+          min="18"
+          max= "100"
+          #age="ngModel"
+          />
+
+        <mat-error *ngIf="age.errors?.required">
+            Age is required
+         </mat-error>
+
+         <mat-error *ngIf="age.errors?.min">
+            Age should be at least 18 above!
+        </mat-error>
+
+         <mat-error *ngIf="age.errors?.max">
+            Max 3 characters
+        </mat-error>
+       
+    </mat-form-field>
+
+        <mat-form-field>
+          <input 
+           matInput type="email"  
+           name="email" 
+           email
+           [(ngModel)] = "val.email" 
+           placeholder="Email"
+           required
+           #email="ngModel"
+          />
+  
+           <mat-error *ngIf="email.errors?.required">
+             Email is required
+           </mat-error>
+  
+           <mat-error *ngIf="email.errors?.email">
+             Email is not valid
+         </mat-error>
+         
+           
+        </mat-form-field>
+  
+        <mat-form-field>
+          <input 
+           matInput 
+           type="password" 
+           name="password"
+           [(ngModel)] = "val.password" 
+           placeholder="Password"
+           required
+           minlength="6"
+           #password="ngModel"
+          />
+  
+          <mat-error *ngIf="password.errors?.required">
+            Password field is required
+         </mat-error>
+  
+         <mat-error *ngIf="password.errors?.minlength">
+            Password must be atleast 6 characters
+       </mat-error>
+        </mat-form-field>
+  
+        <button mat-raised-button color="primary" (click)="show()" [disabled] = "!loginForm.valid">
+          Login
+        </button>
+      </form>
+
+    </mat-card-content>
+  </mat-card>
+

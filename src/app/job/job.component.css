@@ -1,0 +1,22 @@
+.login-page {
+    max-width: 350px;
+    margin: 60px;
+    position: relative;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .test-input {
+    border-bottom: 1px solid grey;
+    margin-bottom: 10px;
+  }
+
+  .data{
+    position: absolute;
+    right: 16px;
+    font-size: 18px;
+    padding: 40px; 
+  }

@@ -1,0 +1,116 @@
+<div *ngIf="isShown" class="data" id="divshow">
+  Company Name: {{ companyName.value }}
+  <br>
+  Job Position: {{ jobPosition.value }}
+  <br>
+  Employee Id: {{ employeeId.value }}
+  <br>
+  Company Email: {{ email.value }}
+  <br>
+  Department: {{ department.value }}
+</div>
+  
+
+
+<mat-card class="login-page">
+    <mat-card-title>Job Profile (Reactive)</mat-card-title>
+    <mat-card-content>
+      <form class="login-form data-form"
+      (ngSubmit)="onSubmit()"
+      [formGroup]="form">
+  
+        <mat-form-field>
+          <input 
+          matInput type="text" 
+          formControlName = "companyName"
+          name="companyName" 
+          placeholder="Company Name"/>
+
+          <mat-error *ngIf="companyName.errors?.required">
+            Company Name is required
+         </mat-error>
+
+         <mat-error *ngIf="companyName.errors?.maxlength">
+          Max 50 characters
+      </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field>
+          <input 
+          matInput type="text"
+          formControlName = "jobPosition"
+          name="jobPosition" 
+          placeholder="Job Position" />
+
+          <mat-error *ngIf="jobPosition.errors?.required">
+            Job Position is required
+         </mat-error>
+
+         <mat-error *ngIf="jobPosition.errors?.maxlength">
+          Max 20 characters
+      </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input 
+            matInput type="text"
+            formControlName = "employeeId"
+            name="employeeId"
+            placeholder="Employee ID" />
+
+            <mat-error *ngIf="employeeId.errors?.required">
+              Employee Id is required
+           </mat-error>
+
+           <mat-error *ngIf="employeeId.errors?.minlength">
+            Employee Id should be 5 characters
+       </mat-error>
+
+           <mat-error *ngIf="employeeId.errors?.maxlength">
+              Employee Id should be 5 characters
+         </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input 
+            matInput type="email"
+            formControlName = "email"
+            name="email"
+            placeholder="Company Email" />
+
+            <mat-error *ngIf="email.errors?.required">
+              Company Email is required
+           </mat-error>
+
+           <mat-error *ngIf="email.errors?.email">
+            Company Email is not valid
+         </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field>
+            <input 
+            matInput type="text"
+            formControlName = "department"
+            name="department"
+            placeholder="Department"/>
+
+            <mat-error *ngIf="department.errors?.required">
+              Department is required
+           </mat-error>
+
+           <mat-error *ngIf="department.errors?.maxlength">
+            Max 20 characters
+        </mat-error>
+
+          </mat-form-field>
+
+        <button mat-raised-button color="primary"
+        (click)="show()"
+        [disabled] = "!form.valid">
+        Submit
+      </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  
+ 
